@@ -108,35 +108,34 @@ function emptyCart() {
 function pay(amount) {
   const total = cartTotal();
   const remainingBalance = amount - total;
-  
-  // Update the global totalPaid variable
-  totalPaid += amount;
-  const remainingBalance = totalPaid - cartTotal();;
 
+  // Check if the remaining balance is less than or equal to 0
   if (remainingBalance >= 0) {
-    totalpaid = 0;
-    emptyCart()
-  }
+    // Update the global totalPaid variable
+    totalPaid += amount;
 
-  // Return a negative number if there is a remaining balance
-  // Return a positive number if money should be returned to the customer
-  return remainingBalance;
+    // Return the remaining balance
+    return remainingBalance;
+  } else {
+    // Handle the case where the customer has overpaid
+    console.error('Invalid payment amount. Customer has overpaid.');
+    return -1; // You can choose a different indicator for overpayment if needed
+  }
 }
 
 // Uncomment the following line if completing the currency converter bonus
 // function currency
 
-
 module.exports = {
-   products,
-   cart,
-   addProductToCart,
-   increaseQuantity,
-   decreaseQuantity,
-   removeProductFromCart,
-   cartTotal,
-   pay, 
-   emptyCart,
-   totalPaid, // Add the totalPaid variable to the exported module
-   // currency
-}
+  products,
+  cart,
+  addProductToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeProductFromCart,
+  cartTotal,
+  pay,
+  emptyCart,
+  totalPaid, // Add the totalPaid variable to the exported module
+  // currency
+};
