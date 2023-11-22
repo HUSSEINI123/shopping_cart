@@ -26,6 +26,9 @@ const products = [
 // Declare an empty array named cart to hold the items in the cart
 const cart = [];
 
+// Create a global variable for totalPaid
+let totalPaid = 0;
+
 // Create a function named addProductToCart
 function addProductToCart(productId) {
   const product = products.find((item) => item.productId === productId);
@@ -106,6 +109,9 @@ function pay(amount) {
   const total = cartTotal();
   const remainingBalance = amount - total;
   
+  // Update the global totalPaid variable
+  totalPaid += amount;
+
   // Return a negative number if there is a remaining balance
   // Return a positive number if money should be returned to the customer
   return remainingBalance;
@@ -125,6 +131,6 @@ module.exports = {
    cartTotal,
    pay, 
    emptyCart,
-   /* Uncomment the following line if completing the currency converter bonus */
+   totalPaid, // Add the totalPaid variable to the exported module
    // currency
 }
