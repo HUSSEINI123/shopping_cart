@@ -111,6 +111,12 @@ function pay(amount) {
   
   // Update the global totalPaid variable
   totalPaid += amount;
+  const remainingBalance = totalPaid - cartTotal();;
+
+  if (remainingBalance >= 0) {
+    totalpaid = 0;
+    emptyCart()
+  }
 
   // Return a negative number if there is a remaining balance
   // Return a positive number if money should be returned to the customer
