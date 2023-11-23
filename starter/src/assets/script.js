@@ -105,22 +105,25 @@ function emptyCart() {
 }
 
 // Create a function named pay
+// Create a function named pay
 function pay(amount) {
   const total = cartTotal();
-  const remainingBalance = totalPaid - cartTotal();
+  const remainingBalance = amount - total;
 
   // Check if the remaining balance is less than or equal to 0
   if (remainingBalance >= 0) {
     // Update the global totalPaid variable
-    totalPaid = 0;
+    totalPaid = amount;
     emptyCart();
 
     // Return the remaining balance
-    
-  } 
-  return remainingBalance;
-  
+    return remainingBalance;
+  } else {
+    console.error('Insufficient funds');
+    return undefined; // Indicate that the payment was not successful
+  }
 }
+
 
 // Uncomment the following line if completing the currency converter bonus
 // function currency
