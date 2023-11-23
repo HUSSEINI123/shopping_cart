@@ -107,20 +107,19 @@ function emptyCart() {
 // Create a function named pay
 function pay(amount) {
   const total = cartTotal();
-  const remainingBalance = amount - total;
+  const remainingBalance = totalPaid - cartTotal();
 
   // Check if the remaining balance is less than or equal to 0
   if (remainingBalance >= 0) {
     // Update the global totalPaid variable
-    totalPaid += amount;
+    totalPaid = 0;
+    emptyCart();
 
     // Return the remaining balance
-    return remainingBalance;
-  } else {
-    // Handle the case where the customer has overpaid
-    console.error('Invalid payment amount. Customer has overpaid.');
-    return -1; // You can choose a different indicator for overpayment if needed
-  }
+    
+  } 
+  return remainingBalance;
+  
 }
 
 // Uncomment the following line if completing the currency converter bonus
