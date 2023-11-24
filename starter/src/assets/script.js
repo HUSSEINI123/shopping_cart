@@ -107,17 +107,19 @@ function emptyCart() {
 // Create a function named pay
 function pay(amount) {
   const total = cartTotal();
-  const remainingBalance = totalPaid - cartTotal();
+  const remainingBalance = amount - total;
+  
+  // Update the global totalPaid variable
+  totalPaid += amount;
+  const remainingBalance = totalPaid - cartTotal();;
 
-  // Check if the remaining balance is less than or equal to 0
   if (remainingBalance >= 0) {
-    // Update the global totalPaid variable
-    totalPaid = 0;
-    emptyCart();
+    totalpaid = 0;
+    emptyCart()
+  }
 
-    // Return the remaining balance
-    
-  } 
+  // Return a negative number if there is a remaining balance
+  // Return a positive number if money should be returned to the customer
   return remainingBalance;
   
 }
