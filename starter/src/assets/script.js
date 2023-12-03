@@ -23,20 +23,6 @@ const products = [
   },
 ];
 
-/* Create 3 or more product objects using object literal notation 
-   Each product should include five properties
-   - name: name of product (string)
-   - price: price of product (number)
-   - quantity: quantity in cart should start at zero (number)
-   - productId: unique id for the product (number)
-   - image: picture of product (url string)
-*/
-/* Images provided in /images folder. All images from Unsplash.com
-   - cherry.jpg by Mae Mu
-   - orange.jpg by Mae Mu
-   - strawberry.jpg by Allec Gomes
-*/
-
 /* Declare an empty array named cart to hold the items in the cart */
 const cart = [];
 
@@ -66,6 +52,7 @@ function increaseQuantity(productId) {
     }
   });
 }
+
 /* Create a function named decreaseQuantity that takes in the productId as an argument
   - decreaseQuantity should get the correct product based on the productId
   - decreaseQuantity should decrease the quantity of the product
@@ -81,6 +68,7 @@ function decreaseQuantity(productId) {
     }
   });
 }
+
 /* Create a function named removeProductFromCart that takes in the productId as an argument
   - removeProductFromCart should get the correct product based on the productId
   - removeProductFromCart should update the product quantity to 0
@@ -94,9 +82,6 @@ function removeProductFromCart(productId) {
     }
   });
 }
-// remove Product from Cart - productId
-// remove Product from cart - update product quantity to 0
-// remove Product from Cart - remove product from cart
 
 /* Create a function named cartTotal that has no parameters
   - cartTotal should iterate through the cart to get the total of all products
@@ -109,6 +94,7 @@ function cartTotal() {
   });
   return total;
 }
+
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart() {
   cart.forEach((product) => {
@@ -116,15 +102,26 @@ function emptyCart() {
   });
   cart.splice(0, cart.length);
 }
+
 /* Create a function named pay that takes in an amount as an argument
   - pay will return a negative number if there is a remaining balance
   - pay will return a positive number if money should be returned to customer
 */
 let balance = 0;
 function pay(amount) {
-  balance += amount;
-  return balance - cartTotal();
+  const total = cartTotal();
+
+  if (amount >= total) {
+    // Sufficient payment
+    balance += amount;
+    return amount - total;
+  } else {
+    // Insufficient payment
+    console.error('Insufficient funds');
+    return -1; // Indicate that the payment was not successful
+  }
 }
+
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 // bonus comes here ;)
 
