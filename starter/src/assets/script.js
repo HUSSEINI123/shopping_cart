@@ -107,13 +107,13 @@ function emptyCart() {
   - pay will return a negative number if there is a remaining balance
   - pay will return a positive number if money should be returned to customer
 */
-let balance = 0;
+let totalPaid = 0;
 function pay(amount) {
   const total = cartTotal();
 
   if (amount >= total) {
     // Sufficient payment
-    balance += amount;
+    totalPaid += total;
     return amount - total;
   } else {
     // Insufficient payment
@@ -141,6 +141,7 @@ module.exports = {
   cartTotal,
   pay,
   emptyCart,
+  totalPaid, // Updated variable name
   /* Uncomment the following line if completing the currency converter bonus */
   // currency
 };
